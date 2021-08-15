@@ -964,6 +964,7 @@ void CBasePlayer::SetAnimation( PLAYER_ANIM playerAnim )
 	switch (playerAnim) 
 	{
 	case PLAYER_JUMP:
+		UTIL_ClientPrintAll(HUD_PRINTNOTIFY, UTIL_VarArgs("Jumping!"));
 		m_IdealActivity = ACT_HOP;
 		break;
 	
@@ -2072,7 +2073,7 @@ void CBasePlayer::CheckTimeBasedDamage()
 		return;
 
 	// only check for time based damage approx. every 2 seconds
-	if (abs(gpGlobals->time - m_tbdPrev) < 2.0)
+	if (fabs(gpGlobals->time - m_tbdPrev) < 2.0)
 		return;
 	
 	m_tbdPrev = gpGlobals->time;
